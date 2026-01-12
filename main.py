@@ -172,6 +172,8 @@ class LayoutLine:
 
 def layout_multiline(text: str, font_path: Optional[str], font_size_mm: float,
                      line_spacing: float, align: str):
+    # Handle literal \n from command line
+    text = text.replace('\\n', '\n')
     lines = text.splitlines()
     if not lines:
         return MultiPolygon([])
